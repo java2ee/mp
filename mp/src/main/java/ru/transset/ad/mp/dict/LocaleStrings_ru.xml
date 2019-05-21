@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties version="1.0">
+  <comment>Сервер приложения МП</comment>
+  <entry key="SYS0001E">Сообщение не найдено, код: {0} .</entry>
+
+  <entry key="DICT001E">Ошибка формирования справочника: {0}.</entry>
+  <entry key="DICT002E">Список справочников пуст.</entry>
+  <entry key="DICT003E">Имя справочника не определено.</entry>
+  <entry key="DICT004E">При формировании списка справочников возникла ошибка.</entry>
+  <entry key="DICT005E">Справочник {0} не найден.</entry>
+
+</properties>

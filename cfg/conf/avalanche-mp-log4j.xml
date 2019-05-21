@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	
+	<Properties>
+		<Property name="base">${sys:catalina.base}</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="${base}/logs/avalanche-mp.log"
+			filePattern="${base}/arcs/avalanche-mp-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			<PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100">
+				<!-- Nested conditions: the inner condition is only evaluated on files 
+					for which the outer conditions are true. -->
+				<Delete basePath="${base}/arcs" maxDepth="2">
+					<IfFileName glob="*/avalanche-mp-*.log.gz">
+						<IfLastModified age="30d">
+							<IfAny>
+								<IfAccumulatedFileSize exceeds="1GB" />
+								<IfAccumulatedFileCount exceeds="30" />
+							</IfAny>
+						</IfLastModified>
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+
+	</Appenders>
+
+	<Loggers>
+		<root level="info">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="RollingFile" />
+		</root>
+	</Loggers>
+
+</Configuration>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties version="1.0">
+  <comment>Application server MP</comment>
+  <entry key="SYS0001E">Message not found, code: {0}.</entry>
+
+  <entry key="DICT001E">Directory formation error: {0}.</entry>
+  <entry key="DICT002E">Directory list is empty.</entry>
+  <entry key="DICT003E">Directory name not defined.</entry>
+  <entry key="DICT004E">An error occurred while generating the list of reference books.</entry>
+  <entry key="DICT005E">Directory {0} is not identified.</entry>
+  
+</properties>
