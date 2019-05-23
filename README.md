@@ -1,5 +1,5 @@
 # mp
-Проект реализации REST сервисов в WEB приложении МП с использованием "Avalanche - application wramework for Java"
+Проект реализации REST сервисов в WEB приложении МП с использованием "Avalanche - application framework for Java"
 
 * api  - модель данных приложения
 * cfg  - примеры конфигурационных файлов
