@@ -27,18 +27,18 @@ public class RestExceptionMapper implements ExceptionMapper<RestException> {
 	 * @see javax.ws.rs.ext.ExceptionMapper#toResponse(java.lang.Throwable)
 	 */
 	@Override
-    public Response toResponse(RestException exception) {
-        ServerError error = new ServerError();
-        error.setCode(exception.getCode());
-        error.setMessage(exception.getMessage());
-        Throwable cause = exception.getCause();
-        if (cause != null) error.setCause(cause.getMessage());
+    	public Response toResponse(RestException exception) {
+        	ServerError error = new ServerError();
+        	error.setCode(exception.getCode());
+        	error.setMessage(exception.getMessage());
+        	Throwable cause = exception.getCause();
+        	if (cause != null) error.setCause(cause.getMessage());
 
-        return Response.serverError()
-                .type(MediaType.APPLICATION_JSON_TYPE.withCharset("utf-8"))
-                .entity(error)
-                .build();
-    }
+        	return Response.serverError()
+                	.type(MediaType.APPLICATION_JSON_TYPE.withCharset("utf-8"))
+                	.entity(error)
+                	.build();
+    	}
 
 	/**
 	 * Сервисный метод генерации ошибки, которая возвращается мобильному клиенту. 
