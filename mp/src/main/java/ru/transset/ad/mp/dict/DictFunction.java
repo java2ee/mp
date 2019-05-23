@@ -84,7 +84,6 @@ public class DictFunction extends Application {
 				rs.close();
     				lastRefresh = currentTime;
     			} catch (Exception e) {
-	    			lastRefresh = 0L;
     				logger.error(e);
     			}
 	        }
