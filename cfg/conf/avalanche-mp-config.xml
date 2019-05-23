@@ -2,26 +2,45 @@
 <avalanche name="Сервер приложений МП"
            doc="http://localhost:51492/help/topic/ru.transset.ad.mp.doc/html/api" ext="xhtml">
 
-	<!-- Сервисные функции работы с БД, источник данных БД определяется в конфигурации           -->
-	<!-- контекста WEB приложение (для Tomcat см. вложенный элемент <Resource> секции <context>) -->
+	<!-- Сервисные функции работы с БД, источник данных БД определяется в конфигурации                  -->
+	<!-- контекста WEB приложение (для Tomcat см. вложенный элемент <Resource> секции <context>)        -->
+	<!--     name     - имя функции, под которым она известна в локальной системе, по этому имени       -->
+	<!--                адаптеры приложений получают доступ к методам этой функции                      -->
+	<!--     resource - JNDI имя источника данных (DayaSource), определенного в конфигурации сервера    -->
 	<function class="ru.funsys.avalanche.sql.Database" name="admap" description="БД ADMAP"
 	          resource="java:/comp/env/jdbc/admap" >
 	</function>          
 
-	<!-- Функционал загрузки справочников приложения из БД                                       -->
-	<!--     period - период контроля изменения справочников в БД,                               -->
-	<!--              диапазон значений от 2 до 60 мин, значение по умолчанию 5 мин.             -->
+	<!-- Функционал загрузки справочников приложения из БД                                              -->
+	<!--     name   - имя функции, под которым она известна в локальной системе, по этому имени         -->
+	<!--              адаптеры приложений получают доступ к методам этой функции                        -->
+	<!--     period - период контроля изменения справочников в БД,                                      -->
+	<!--              диапазон значений от 2 до 60 мин, значение по умолчанию 5 мин.                    -->
 	<function class="ru.transset.ad.mp.dict.DictFunction" name="dict-function" period="5" 
 	          description="Функция справочников приложения" >
+		<!-- Адаптер вызова методов функции ru.funsys.avalanche.sql.Database                        -->
+		<!--     name - имя адаптера, значение admap определяет имя поля в классе приложения        -->
+		<!--            ru.transset.ad.mp.dict.DictFunction или имя метода setAdmap(Adapter admap)  -->
+		<!--            это класса                                                                  -->
+		<!--     uri  - имя локальной функции, методы которой вызываются с использованием           -->
+		<!--            этого адаптера (см. функцию ru.transset.ad.mp.dict.DictFunction)            -->
 		<adapter class="ru.funsys.avalanche.sql.Adapter" name="admap" uri="admap" />	
+		<!-- Параметр, переопределяющий прафила формирования справочника locality                   -->
 		<parameter name="dictionary.locality" value="SELECT * FROM admap.locality WHERE language = ? ORDER BY name_city ASC"/>
+		<!-- Параметр, переопределяющий прафила формирования справочника road                       -->
 		<parameter name="dictionary.road"
 		           value="SELECT * FROM (SELECT r.id, r.pos, v.id version_id, v.description, v.language FROM admap.road_version v, admap.road r WHERE v.road_id = r.id and website is null) t WHERE language = ? ORDER BY pos, version_id" />
 	</function>
 
-	<!-- Реализация сервисов - загрузки справочников приложения                                  -->
-	<!--     service - признак наличия методов реализации REST сервисов в экземпляре класса      -->
+	<!-- Реализация сервисов - загрузки справочников приложения                                         -->
+	<!--     service - признак наличия методов реализации REST сервисов в экземпляре класса             -->
 	<application class="ru.transset.ad.mp.dict.DictService" name="dict-service" service="true">
+		<!-- Адаптер вызова методов функции ru.transset.ad.mp.dict.DictFunction                     -->
+		<!--     name - имя адаптера, значение dictAdapter определяет имя поля в классе приложения  -->
+		<!--            ru.transset.ad.mp.dict.DictService или имя метода                           -->
+		<!--            setDictAdapter(DictAdapter dictAdapter) это класса                          -->
+		<!--     uri  - имя локальной функции, методы которой вызываются с использованием           -->
+		<!--            этого адаптера (см. функцию ru.transset.ad.mp.dict.DictFunction)            -->
 		<adapter class="ru.transset.ad.mp.dict.DictAdapter" name="dictAdapter" uri="dict-function" />
 	</application>
 	 
