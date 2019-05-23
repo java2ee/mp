@@ -93,12 +93,12 @@ public class RestExceptionMapper implements ExceptionMapper<RestException> {
 	 * </pre>
 	 */
 	public static Response newRestException(Logger logger, Throwable throwable, String code, String lang, Object... args) { 
-    	String message = Messages.getMessage(code, lang, args);
-    	if (logger != null) {
-    		if (throwable == null) logger.error(code + ' ' + message);
-    		else logger.error(code + ' ' + message, throwable);
-    	}
-    	return new RestExceptionMapper().toResponse(new RestException(code, message, throwable));
+    		String message = Messages.getMessage(code, lang, args);
+    		if (logger != null) {
+    			if (throwable == null) logger.error(code + ' ' + message);
+    			else logger.error(code + ' ' + message, throwable);
+    		}
+    		return new RestExceptionMapper().toResponse(new RestException(code, message, throwable));
 	}
 
 }
