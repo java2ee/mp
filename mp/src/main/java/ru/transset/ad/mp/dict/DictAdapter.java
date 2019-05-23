@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import ru.funsys.avalanche.AvalancheRemote;
 
 /**
- * Адаптер функции обработки запросов по справочникам мобильного приложения 
+ * Адаптер функции обработки запросов справочников мобильного приложения 
  * 
  * @author Валерий Лиховских
  *
