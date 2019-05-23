@@ -150,11 +150,14 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
       
         <Context docBase="mp" path="/mp" reloadable="true" source="org.eclipse.jst.jee.server:mp">
+          <!-- Определение экземпляра класса ru.funsys.avalanche.Avalanche и регистрация этого      -->
+          <!-- экземпляра в JNDI                                                                    -->
           <Resource auth="Container" factory="org.apache.naming.factory.BeanFactory" name="avalanche/mp"
                     type="ru.funsys.avalanche.Avalanche"/>
-          <Resource name="jdbc/admap" auth="Container" type="javax.sql.DataSource"
+          <!-- Определение источника данных WEB приложения                                          -->
+	  <Resource name="jdbc/admap" auth="Container" type="javax.sql.DataSource"
                     maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-	                username="xxxxx" password="xxxxxxxx" driverClassName="org.postgresql.Driver"
+	            username="xxxxx" password="xxxxxxxx" driverClassName="org.postgresql.Driver"
                     url="jdbc:postgresql://xxx.xxx.xxx.xxx:5432/xxxxx"/>
         </Context>
         
