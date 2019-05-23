@@ -81,6 +81,7 @@ public class DictFunction extends Application {
         	        		DictHeader dictHeader = new DictHeader(rs.getInt("id"), rs.getString("name"), rs.getDate("updateTime"));
 	        	           	dicts.put(dictHeader.getName(), dictHeader);
         	        	}
+				rs.close();
     				lastRefresh = currentTime;
     			} catch (Exception e) {
 	    			lastRefresh = 0L;
@@ -144,6 +145,7 @@ public class DictFunction extends Application {
 		                }
 		            	contentList.add(row);
 			}
+			rs.close();
 			dict.setContent(contentList);
 	        }
         	return dict;
