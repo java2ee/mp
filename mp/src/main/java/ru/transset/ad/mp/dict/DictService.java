@@ -43,6 +43,16 @@ public class DictService extends Application {
 	private static final String DICT004E = "DICT004E"; // NOI18N
 	private static final String DICT005E = "DICT005E"; // NOI18N
 
+	/*
+	 * Адаптер вызова методов функции работы со справочниками приложения.
+	 * Для инициализации этого поля в файле конфигурации должен быть 
+	 * определен дочерний элкемент <b>{@code <adapter>}</b> с атрибутом <b>{@code name}</b>
+	 * с установленным значением <b>{@code dictAdapter}</b>. 
+	 * 
+	 * <pre>
+	 * &lt;adapter class="ru.transset.ad.mp.dict.DictAdapter" name="dictAdapter" uri="dict-function" /&gt;	
+	 * </pre> 
+	 */
 	private DictAdapter dictAdapter;
 
 	/**
