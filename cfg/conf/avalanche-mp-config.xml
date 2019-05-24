@@ -23,7 +23,7 @@
 		<!--            ru.transset.ad.mp.dict.DictFunction или имя метода setAdmap(Adapter admap)  -->
 		<!--            это класса                                                                  -->
 		<!--     uri  - имя локальной функции, методы которой вызываются с использованием           -->
-		<!--            этого адаптера (см. функцию ru.transset.ad.mp.dict.DictFunction)            -->
+		<!--            этого адаптера (см. функцию ru.funsys.avalanche.sql.Database)               -->
 		<adapter class="ru.funsys.avalanche.sql.Adapter" name="admap" uri="admap" />	
 		<!-- Параметр, переопределяющий правила формирования справочника locality                   -->
 		<parameter name="dictionary.locality" value="SELECT * FROM admap.locality WHERE language = ? ORDER BY name_city ASC"/>
