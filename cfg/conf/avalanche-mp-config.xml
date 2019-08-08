@@ -6,7 +6,7 @@
 	<!-- контекста WEB приложение (для Tomcat см. вложенный элемент <Resource> секции <context>)        -->
 	<!--     name     - имя функции, под которым она известна в локальной системе, по этому имени       -->
 	<!--                адаптеры приложений получают доступ к методам этой функции                      -->
-	<!--     resource - JNDI имя источника данных (DayaSource), определенного в конфигурации сервера    -->
+	<!--     resource - JNDI имя источника данных (DataSource), определенного в конфигурации сервера    -->
 	<function class="ru.funsys.avalanche.sql.Database" name="admap" description="БД ADMAP"
 	          resource="java:/comp/env/jdbc/admap" >
 	</function>          
